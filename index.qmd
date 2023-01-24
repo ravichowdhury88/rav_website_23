@@ -1,5 +1,5 @@
 ---
-title: "rav_website_23"
+title: "The R Stuff"
 listing:
   contents: posts
   sort: "date desc"
