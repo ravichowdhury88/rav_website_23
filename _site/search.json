@@ -9,7 +9,7 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Ravi Chowdhury",
     "section": "",
     "text": "I am a Research Data Analyst at Northwestern University and work for the Bluhm Cardiovascular Institute at Northwestern Memorial Hospital. I like working with R and try to make peoples life easy by making reproducible reports. I love working on data visualization as well as rmarkdown for reporting. I want to post about various projects and tips that I have learned and still learning to help others."
   },
@@ -26,5 +26,19 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Ravi Chowdhury",
+    "section": "Education",
+    "text": "Education\nMasters of Public Health (MPH) - Epidemiology & Biostatistics - University of Illinois at Chicago (UIC)"
+  },
+  {
+    "objectID": "about.html#experince",
+    "href": "about.html#experince",
+    "title": "Ravi Chowdhury",
+    "section": "Experince",
+    "text": "Experince\nResearch Data Analyst - Northwestern University"
   }
 ]
