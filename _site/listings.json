@@ -2,8 +2,17 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html"
+      "/blog/2023-01-filter_with_str_detect/filter_with_str_detect.html",
+      "/blog/post-with-code/index.html",
+      "/blog/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/2023-01-filter_with_str_detect/filter_with_str_detect.html",
+      "/blog/post-with-code/index.html",
+      "/blog/welcome/index.html"
     ]
   }
 ]

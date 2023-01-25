@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "The R Stuff",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Jan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -18,7 +18,7 @@
     "href": "posts/post-with-code/index.html",
     "title": "Post With Code",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+    "text": "1 + 1\n\n[1] 2"
   },
   {
     "objectID": "posts/welcome/index.html",
@@ -40,5 +40,33 @@
     "title": "Ravi Chowdhury",
     "section": "Experince",
     "text": "Experince\nResearch Data Analyst - Northwestern University"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "The R Stuff",
+    "section": "",
+    "text": "Filter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/post-with-code/index.html",
+    "href": "blog/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "blog/welcome/index.html",
+    "href": "blog/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "blog/2023-01-filter_with_str_detect/filter_with_str_detect.html",
+    "href": "blog/2023-01-filter_with_str_detect/filter_with_str_detect.html",
+    "title": "Filter with str_detect",
+    "section": "",
+    "text": "stringr::str_detect(\"ravi chowdhury\", \"ravi\")\n\n[1] TRUE\n\n\nas we can see the it returns logical TRUE which means it was able to find the string, however str_detect is case sensitive as seen below:\n\nstringr::str_detect(\"Ravi Chowdhury\", \"ravi\")\n\n[1] FALSE\n\n\nTo fix this we can use regex function ignore_case\n\nstringr::str_detect(\"Ravi Chowdhury\", regex(\"ravi\", ignore_case = TRUE))\n\n[1] TRUE"
   }
 ]

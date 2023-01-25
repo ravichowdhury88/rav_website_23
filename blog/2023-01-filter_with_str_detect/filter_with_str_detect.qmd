@@ -1,0 +1,30 @@
+---
+title: "Filter with str_detect"
+author: "Ravi C"
+date: "01-25-2023"
+categories: [tidyverse, code]
+format: html
+---
+
+To filter using str_detect, generally you can use the code as follows:
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+```
+```{r}
+stringr::str_detect("ravi chowdhury", "ravi")
+```
+
+as we can see the it returns logical TRUE which means it was able to find the string, however str_detect is case sensitive as seen below:
+
+```{r}
+stringr::str_detect("Ravi Chowdhury", "ravi")
+```
+
+To fix this we can use regex function ignore_case
+
+```{r}
+stringr::str_detect("Ravi Chowdhury", regex("ravi", ignore_case = TRUE))
+```

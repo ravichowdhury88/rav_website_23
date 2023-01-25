@@ -1,0 +1,14 @@
+{
+  "hash": "f81aecc961499483db39261dd6f1438d",
+  "result": {
+    "markdown": "---\ntitle: \"Filter with str_detect\"\nauthor: \"Ravi C\"\ndate: \"01-25-2023\"\ncategories: [tidyverse, code]\nformat: html\n---\n\n\nTo filter using str_detect, generally you can use the code as follows:\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nstringr::str_detect(\"ravi chowdhury\", \"ravi\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] TRUE\n```\n:::\n:::\n\n\nas we can see the it returns logical TRUE which means it was able to find the string, however str_detect is case sensitive as seen below:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nstringr::str_detect(\"Ravi Chowdhury\", \"ravi\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] FALSE\n```\n:::\n:::\n\n\nTo fix this we can use regex function ignore_case\n\n\n::: {.cell}\n\n```{.r .cell-code}\nstringr::str_detect(\"Ravi Chowdhury\", regex(\"ravi\", ignore_case = TRUE))\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] TRUE\n```\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

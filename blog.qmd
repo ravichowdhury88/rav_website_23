@@ -1,13 +1,17 @@
 ---
 title: ""
 listing:
-- id: listing-blog
-  contents: "blog/"
+  contents: blog
   sort: "date desc"
   type: default
-  categories: false
+  categories: true
   sort-ui: false
   filter-ui: false
+  fields: [title, subtitle, author, description, date]
 page-layout: full
 title-block-banner: true
 ---
+
+# Blog
+
+<br>

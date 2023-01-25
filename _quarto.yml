@@ -2,14 +2,19 @@ project:
   type: website
 
 website:
-  title: "rav_website_23"
+  title: "The R Stuff"
   navbar:
+    left:
+      - text: "{{< fa house-user >}} Home"
+        href: index.qmd
+      - text: "{{< fa laptop-code >}} Blog"
+        href: blog.qmd
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/ravichowdhury88
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/techixir
 format:
   html:
     theme: lux
