@@ -67,6 +67,6 @@
     "href": "blog/2023-01-filter_with_str_detect/filter_with_str_detect.html",
     "title": "Filter with str_detect",
     "section": "",
-    "text": "stringr::str_detect(\"ravi chowdhury\", \"ravi\")\n\n[1] TRUE\n\n\nas we can see the it returns logical TRUE which means it was able to find the string, however str_detect is case sensitive as seen below:\n\nstringr::str_detect(\"Ravi Chowdhury\", \"ravi\")\n\n[1] FALSE\n\n\nTo fix this we can use regex function ignore_case\n\nstringr::str_detect(\"Ravi Chowdhury\", regex(\"ravi\", ignore_case = TRUE))\n\n[1] TRUE\n\ntbl <- \"tbl\"\n\ntbl |> tolower()\n\n[1] \"tbl\""
+    "text": "stringr::str_detect(\"ravi chowdhury\", \"ravi\")\n\n[1] TRUE\n\n\nas we can see the it returns logical TRUE which means it was able to find the string, however str_detect is case sensitive as seen below:\n\nstringr::str_detect(\"Ravi Chowdhury\", \"ravi\")\n\n[1] FALSE\n\n\nTo fix this we can use regex function ignore_case\n\nstringr::str_detect(\"Ravi Chowdhury\", regex(\"ravi\", ignore_case = TRUE))\n\n[1] TRUE"
   }
 ]

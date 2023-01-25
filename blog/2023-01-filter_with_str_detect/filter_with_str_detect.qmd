@@ -28,4 +28,3 @@ To fix this we can use regex function ignore_case
 ```{r}
 stringr::str_detect("Ravi Chowdhury", regex("ravi", ignore_case = TRUE))
 ```
-
