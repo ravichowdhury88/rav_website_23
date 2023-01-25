@@ -17,7 +17,7 @@ website:
         href: https://twitter.com/techixir
 format:
   html:
-    theme: lux
+    theme: sandstone
     css: styles.css
 
 editor: visual
