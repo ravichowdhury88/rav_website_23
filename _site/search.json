@@ -74,6 +74,6 @@
     "href": "blog/2023-02-sql_server_connect/sql_server_connect.html",
     "title": "Connect with SQL Server",
     "section": "",
-    "text": "con <- DBI::dbConnect(odbc::odbc(), \"db_name\")\n\nOnce the connection is create using the code above you can now use dplyr tbl function to query the tables\n\ntbl(con, \"table_name\")\n\nThe above code works fine if your table is under the “dbo” schema, but what if it is on a different schema?\nWe can use the in_schema function from the dbplyr.\n\ntbl(con, dbplyr::in_schema(\"schema\", \"table_name\"))"
+    "text": "con <- DBI::dbConnect(odbc::odbc(), \"db_name\")\n\nOnce the connection is create using the code above you can now use dplyr tbl function to query the tables\n\ntbl(con, \"table_name\")\n\nThe above code works fine if your table is under the “dbo” schema, but what if it is on a different schema?\nWe can use the in_schema function from the dbplyr package.\n\ntbl(con, dbplyr::in_schema(\"schema\", \"table_name\"))"
   }
 ]
