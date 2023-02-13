@@ -1,10 +1,12 @@
 ---
-title: "Connect with SQL Server"
+title: "Interact with SQL Server"
 author: "Ravi C"
 date: "02-13-2023"
 categories: [tidyverse, code, sql]
 format: html
 ---
+
+We will go through how to connect to a sql server and fetch tables.
 
 To connect to SQL Server, we will use the `DBI` and `ODBC` package.
 Please note you need to create a ODBC connection in Windows using the built in "ODBC Data Source" application.
@@ -27,6 +29,16 @@ Once the connection is create using the code above you can now use `dplyr` *`tbl
 #| eval: false
 
 tbl(con, "table_name")
+```
+
+The table from *`tbl`* is a lazy table and to assign it to tibble or data frame we need the *`collect`* function.
+
+```{r}
+#| eval: false
+
+tbl_tibble <-
+  tbl(con, "table_name") |>
+  collect()
 ```
 
 The above code works fine if your table is under the "dbo" schema, but what if it is on a different schema?
