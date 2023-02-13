@@ -38,3 +38,32 @@ We can use the *`in_schema`* function from the `dbplyr` package.
 
 tbl(con, dbplyr::in_schema("schema", "table_name"))
 ```
+
+::: {.callout-warning}
+There is an issue with nanodbc where NVARCHAR fields are out of bounds for the connection and it wont return a result, I was able to find a solution on stackoverflow [here](https://stackoverflow.com/questions/45001152/r-dbi-odbc-error-nanodbc-nanodbc-cpp3110-07009-microsoftodbc-driver-13-fo).
+:::
+
+
+The code below will basically arrrange the columns in order and the NVARCHAR fields that have CHARACTER_MAXIMUM_LENGTH = -1 will be replaced with 100000 so that they are at the end of select query.
+
+```{r}
+#| eval: false
+
+
+col_names <-
+  data_type |>
+  mutate(
+    col_nm = case_when(
+      is.na(CHARACTER_MAXIMUM_LENGTH) ~ 10,
+      CHARACTER_MAXIMUM_LENGTH == -1 ~ 100000,
+      TRUE ~ as.double(CHARACTER_MAXIMUM_LENGTH)
+    )
+  ) |>
+  arrange(col_nm) |>
+  pull(COLUMN_NAME) |>
+  paste(collapse = ", ")
+
+query <- paste("SELECT", col_names, "FROM schema.table_name")
+
+tbl(con, sql(query))
+```
