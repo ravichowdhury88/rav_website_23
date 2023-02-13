@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "The R Stuff",
     "section": "",
-    "text": "Jan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Feb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -46,7 +46,7 @@
     "href": "blog.html",
     "title": "The R Stuff",
     "section": "",
-    "text": "Filter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Connect with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/post-with-code/index.html",
@@ -68,5 +68,12 @@
     "title": "Filter with str_detect",
     "section": "",
     "text": "stringr::str_detect(\"ravi chowdhury\", \"ravi\")\n\n[1] TRUE\n\n\nas we can see the it returns logical TRUE which means it was able to find the string, however str_detect is case sensitive as seen below:\n\nstringr::str_detect(\"Ravi Chowdhury\", \"ravi\")\n\n[1] FALSE\n\n\nTo fix this we can use regex function ignore_case\n\nstringr::str_detect(\"Ravi Chowdhury\", regex(\"ravi\", ignore_case = TRUE))\n\n[1] TRUE"
+  },
+  {
+    "objectID": "blog/2023-02-sql_server_connect/sql_server_connect.html",
+    "href": "blog/2023-02-sql_server_connect/sql_server_connect.html",
+    "title": "Connect with SQL Server",
+    "section": "",
+    "text": "con <- DBI::dbConnect(odbc::odbc(), \"db_name\")\n\nOnce the connection is create using the code above you can now use dplyr tbl function to query the tables\n\ntbl(con, \"table_name\")\n\nThe above code works fine if your table is under the “dbo” schema, but what if it is on a different schema?\nWe can use the in_schema function from the dbplyr.\n\ntbl(con, dbplyr::in_schema(\"schema\", \"table_name\"))"
   }
 ]

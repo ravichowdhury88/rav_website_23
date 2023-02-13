@@ -12,18 +12,19 @@ Please note you need to create a ODBC connection in Windows using the built in "
 ```{r}
 #| label: setup
 #| include: false
+library(tidyverse)
 ```
 
 ```{r}
-#| echo: false
+#| eval: false
 
-con <- DBI::dbConnect(odbc::odbc(), "CTUWarehouse")
+con <- DBI::dbConnect(odbc::odbc(), "db_name")
 ```
 
 Once the connection is create using the code above you can now use dplyr tbl function to query the tables
 
 ```{r}
-#| echo: false
+#| eval: false
 
 tbl(con, "table_name")
 ```
@@ -33,7 +34,7 @@ The above code works fine if your table is under the "dbo" schema, but what if i
 We can use the in_schema function from the dbplyr.
 
 ```{r}
-#| echo: false
+#| eval: false
 
 tbl(con, dbplyr::in_schema("schema", "table_name"))
 ```

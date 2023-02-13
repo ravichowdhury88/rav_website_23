@@ -1,0 +1,14 @@
+{
+  "hash": "805efd30fca9e4cdcb8581fb3e28c36c",
+  "result": {
+    "markdown": "---\ntitle: \"Connect with SQL Server\"\nauthor: \"Ravi C\"\ndate: \"02-13-2023\"\ncategories: [tidyverse, code, sql]\nformat: html\n---\n\n\nTo connect to SQL Server, we will use the DBI and ODBC package.\nPlease note you need to create a ODBC connection in Windows using the built in \"ODBC Data Source\" application.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ncon <- DBI::dbConnect(odbc::odbc(), \"db_name\")\n```\n:::\n\n\nOnce the connection is create using the code above you can now use dplyr tbl function to query the tables\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntbl(con, \"table_name\")\n```\n:::\n\n\nThe above code works fine if your table is under the \"dbo\" schema, but what if it is on a different schema?\n\nWe can use the in_schema function from the dbplyr.\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntbl(con, dbplyr::in_schema(\"schema\", \"table_name\"))\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
