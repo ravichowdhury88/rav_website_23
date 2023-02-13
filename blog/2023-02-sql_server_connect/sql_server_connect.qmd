@@ -1,5 +1,5 @@
 ---
-title: "Filter with str_detect"
+title: "Connect with SQL Server"
 author: "Ravi C"
 date: "02-13-2023"
 categories: [tidyverse, code, sql]
