@@ -1,0 +1,40 @@
+---
+title: "Filter with str_detect"
+author: "Ravi C"
+date: "02-13-2023"
+categories: [tidyverse, code, sql]
+format: html
+---
+
+To connect to SQL Server, we will use the DBI and ODBC package.
+Please note you need to create a ODBC connection in Windows using the built in "ODBC Data Source" application.
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+```
+
+```{r}
+#| echo: false
+
+con <- DBI::dbConnect(odbc::odbc(), "CTUWarehouse")
+```
+
+Once the connection is create using the code above you can now use dplyr tbl function to query the tables
+
+```{r}
+#| echo: false
+
+tbl(con, "table_name")
+```
+
+The above code works fine if your table is under the "dbo" schema, but what if it is on a different schema?
+
+We can use the in_schema function from the dbplyr.
+
+```{r}
+#| echo: false
+
+tbl(con, dbplyr::in_schema("schema", "table_name"))
+```
