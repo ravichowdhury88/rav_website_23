@@ -12,7 +12,6 @@ Please note you need to create a ODBC connection in Windows using the built in "
 ```{r}
 #| label: setup
 #| include: false
-library(tidyverse)
 ```
 
 ```{r}
