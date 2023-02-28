@@ -1,0 +1,84 @@
+---
+title: "Create SQL DB in R"
+author: "Ravi C"
+date: "02-28-2023"
+categories: [tidyverse, code, sql, database]
+format: html
+---
+
+To produce a SQL database, we will utilize the `RSQLite` and `DBI` packages and the "iris" data set available in R.
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+```
+
+We verify that the data set is available for loading.
+
+```{r}
+#| label: check dataset
+iris |> head()
+```
+
+Then, using the `RSQLite` and `DBI` packages, we create a new in-memory database.
+
+```{r}
+#| label: create SQL DB
+con <- DBI::dbConnect(
+  drv = RSQLite::SQLite(),
+  dbname = ":memory:"
+  )
+```
+
+Next, we utilize the `dbWriteTable` function from the `DBI` package to store the "iris" data set into a SQL table in the in-memory database created in the previous step. As shown in the output, a table named "iris_sql_tbl" is created.
+
+In the query below, replace "conn" with your connection name from the previous step, "name" with your preferred name for the SQL table (in this case, it is "iris_sql_tbl"), and "value" with the data set being written to the SQL database.
+
+```{r}
+#| label: write table to SQL database
+DBI::dbWriteTable(
+  conn = con,
+  name = "iris_sql_tbl",
+  value = iris
+)
+
+DBI::dbListTables(con)
+```
+
+Using the `tbl` function from the `tidyverse` package, we can execute a query on the newly created SQL database table.
+
+```{r}
+#| label: query table
+tbl(con, "iris_sql_tbl")
+```
+
+We can also run querries using the SQL connection and not have to pull the data in R.
+
+```{r}
+#| label: running some basic summary
+tbl(con, "iris_sql_tbl") |>
+  summarize(
+    max_length = max(Sepal.Length, na.rm = TRUE),
+    min_length = min(Sepal.Length, na.rm = TRUE)
+  )
+```
+
+Alternatively, we can use the `dbGetQuery` function from `DBI` to execute actual SQL code.
+
+::: {.callout-warning}
+I ran into an issue where the querry was not able to find the column name without double quotes, will update here if I come across an explanation to it. For now, I am adding a `""` and using "\" to escape it.
+:::
+
+```{r}
+#| label: execute code using DBI
+DBI::dbGetQuery(
+  con,
+  "SELECT
+  MAX(\"Sepal.Length\") AS max_length,
+  MIN(\"Sepal.Length\") AS min_length
+  FROM iris_sql_tbl"
+)
+```
+
+This approach will assist in generating blog posts with SQL connections without having to connect to a live SQL Server.

@@ -61,7 +61,6 @@ The code below will basically arrrange the columns in order and the NVARCHAR fie
 ```{r}
 #| eval: false
 
-
 col_names <-
   data_type |>
   mutate(
