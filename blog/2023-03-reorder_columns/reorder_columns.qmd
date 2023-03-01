@@ -1,0 +1,50 @@
+---
+title: "Reorder columns"
+author: "Ravi C"
+date: "03-01-2023"
+categories: [tidyverse, code]
+format: html
+---
+
+There are several methods to change the order of columns in R. While the select function from dplyr is a common way to do it, we will also explore other functions that can be used to rearrange columns.
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+```
+
+To demonstrate these methods, we will use the "us_rent_income" dataset from the `tidyverse` package. To rearrange columns using the `select` function, we can explicitly specify the order in which we want our columns to appear.
+
+```{r}
+us_rent_income |> head()
+```
+
+```{r}
+us_rent_income |>
+  select(GEOID, estimate, moe, NAME, variable) |>
+  head()
+```
+
+Alternatively, we can use the everything function from tidyselect to select our preferred order, with the exception of columns that we have explicitly specified.
+
+We can shorten this up and little bit using `everything` from  `tidyselect`, this way we select our prefered order.
+
+1. GEOID
+2. estimate
+3. moe
+4. everything else
+
+```{r}
+us_rent_income |>
+  select(GEOID, estimate, moe, everything()) |>
+  head()
+```
+
+If we want to select only the numeric columns and rearrange them, we can use the `relocate` function from `dplyr` by specifying the location where the selected columns should be placed. In the example given, we move the numeric columns to be after the "GEOID" column.
+
+```{r}
+us_rent_income |>
+  relocate(where(is.numeric), .after = GEOID) |>
+  head()
+```
