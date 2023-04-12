@@ -1,0 +1,23 @@
+---
+title: "Create Table Permission in SQL"
+author: "Ravi C"
+date: "04-12-2023"
+categories: [code, sql, database]
+format: html
+---
+
+While working on a code that writes data to SQL database, I ran into an issue where R gives me an error as below
+
+::: {.callout-important}
+Error: nanodbc/nanodbc.cpp:1691: 42000: [Microsoft][ODBC SQL Server Driver][SQL Server]CREATE TABLE permission denied in database 'Database_Name'.
+:::
+
+The problem here is that my user does not have the write permission to create tables in the database, since I was creating a new table. To fix this since I have access to the SQL Server and I am a sysadmin as well I can use SSMS (SQL Server Management Studio) or just run the SQL code in R.
+
+```{sql}
+USE TransitDB
+GO
+GRANT ALTER ON SCHEMA::DBO TO RW_User
+GRANT CREATE TABLE TO RW_User
+GO
+```

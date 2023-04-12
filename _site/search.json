@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "The R Stuff",
     "section": "",
-    "text": "Reorder columns\n\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nCreate SQL DB in R\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nInteract with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\nNo matching items"
+    "text": "Create Table Permission in SQL\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nReorder columns\n\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nCreate SQL DB in R\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nInteract with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -46,7 +46,7 @@
     "href": "blog.html",
     "title": "The R Stuff",
     "section": "",
-    "text": "Blog\n\n\n\n\n\n\n\n\n\n\n\n\nReorder columns\n\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nCreate SQL DB in R\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nInteract with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\nNo matching items"
+    "text": "Blog\n\n\n\n\n\n\n\n\n\n\n\n\nCreate Table Permission in SQL\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nReorder columns\n\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nCreate SQL DB in R\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nInteract with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/post-with-code/index.html",
@@ -89,5 +89,12 @@
     "title": "Reorder columns",
     "section": "",
     "text": "There are several methods to change the order of columns in R. While the select function from dplyr is a common way to do it, we will also explore other functions that can be used to rearrange columns.\nTo demonstrate these methods, we will use the “us_rent_income” dataset from the tidyverse package. To rearrange columns using the select function, we can explicitly specify the order in which we want our columns to appear.\n\nus_rent_income |> head()\n\n# A tibble: 6 x 5\n  GEOID NAME    variable estimate   moe\n  <chr> <chr>   <chr>       <dbl> <dbl>\n1 01    Alabama income      24476   136\n2 01    Alabama rent          747     3\n3 02    Alaska  income      32940   508\n4 02    Alaska  rent         1200    13\n5 04    Arizona income      27517   148\n6 04    Arizona rent          972     4\n\n\n\nus_rent_income |>\n  select(GEOID, estimate, moe, NAME, variable) |>\n  head()\n\n# A tibble: 6 x 5\n  GEOID estimate   moe NAME    variable\n  <chr>    <dbl> <dbl> <chr>   <chr>   \n1 01       24476   136 Alabama income  \n2 01         747     3 Alabama rent    \n3 02       32940   508 Alaska  income  \n4 02        1200    13 Alaska  rent    \n5 04       27517   148 Arizona income  \n6 04         972     4 Arizona rent    \n\n\nAlternatively, we can use the everything function from tidyselect to select our preferred order, with the exception of columns that we have explicitly specified.\nWe can shorten this up and little bit using everything from tidyselect, this way we select our prefered order.\n\nGEOID\nestimate\nmoe\neverything else\n\n\nus_rent_income |>\n  select(GEOID, estimate, moe, everything()) |>\n  head()\n\n# A tibble: 6 x 5\n  GEOID estimate   moe NAME    variable\n  <chr>    <dbl> <dbl> <chr>   <chr>   \n1 01       24476   136 Alabama income  \n2 01         747     3 Alabama rent    \n3 02       32940   508 Alaska  income  \n4 02        1200    13 Alaska  rent    \n5 04       27517   148 Arizona income  \n6 04         972     4 Arizona rent    \n\n\nIf we want to select only the numeric columns and rearrange them, we can use the relocate function from dplyr by specifying the location where the selected columns should be placed. In the example given, we move the numeric columns to be after the “GEOID” column.\n\nus_rent_income |>\n  relocate(where(is.numeric), .after = GEOID) |>\n  head()\n\n# A tibble: 6 x 5\n  GEOID estimate   moe NAME    variable\n  <chr>    <dbl> <dbl> <chr>   <chr>   \n1 01       24476   136 Alabama income  \n2 01         747     3 Alabama rent    \n3 02       32940   508 Alaska  income  \n4 02        1200    13 Alaska  rent    \n5 04       27517   148 Arizona income  \n6 04         972     4 Arizona rent"
+  },
+  {
+    "objectID": "blog/2023-04-create_table_permission_sql/create_table_permission_sql.html",
+    "href": "blog/2023-04-create_table_permission_sql/create_table_permission_sql.html",
+    "title": "Create Table Permission in SQL",
+    "section": "",
+    "text": "While working on a code that writes data to SQL database, I ran into an issue where R gives me an error as below\n\n\n\n\n\n\nImportant\n\n\n\nError: nanodbc/nanodbc.cpp:1691: 42000: [Microsoft][ODBC SQL Server Driver][SQL Server]CREATE TABLE permission denied in database ‘Database_Name’.\n\n\nThe problem here is that my user does not have the write permission to create tables in the database, since I was creating a new table. To fix this since I have access to the SQL Server and I am a sysadmin as well I can use SSMS (SQL Server Management Studio) or just run the SQL code in R.\nUSE TransitDB\nGO\nGRANT ALTER ON SCHEMA::DBO TO RW_User\nGRANT CREATE TABLE TO RW_User\nGO"
   }
 ]

@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/blog/2023-04-create_table_permission_sql/create_table_permission_sql.html",
       "/blog/2023-03-reorder_columns/reorder_columns.html",
       "/blog/2023-02-create_sql_database_in_r/create_sql_database.html",
       "/blog/2023-02-sql_server_connect/sql_server_connect.html",
@@ -11,6 +12,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/2023-04-create_table_permission_sql/create_table_permission_sql.html",
       "/blog/2023-03-reorder_columns/reorder_columns.html",
       "/blog/2023-02-create_sql_database_in_r/create_sql_database.html",
       "/blog/2023-02-sql_server_connect/sql_server_connect.html",
