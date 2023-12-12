@@ -1,0 +1,48 @@
+---
+title: "Select Empty Columns"
+author: "Ravi Chowdhury"
+---
+
+This post is about selecting empty columns using R and `tidyverse`, specifically `dplyr`. There might be a need where you want to select only empty columns from a table for quality check. For example you expect a column to have data and if the column is empty in the table you can perform checks.
+
+With the `janitor` package, using the `remove_empty` function, you can remove empty columns but I am not sure if you can get a list of columns that are empty or have no data.
+
+## Load packages
+
+```{r load packages}
+library(tidyverse)
+```
+
+## Read data
+
+```{r data}
+billboard
+```
+
+We will create an empty column in this table to reference it and find it.
+
+## Create empty column
+
+```{r}
+billboard_modified <- billboard |> 
+  mutate(
+    empty_col = NA_character_ #empty column
+  )
+```
+
+## Show / select just the blank or empty columns
+
+```{r}
+billboard_modified |> 
+  select(where( ~ all(is.na(.))))
+```
+
+We will use `colnames()` function to show the list of columns since this table has multiple empty columns.
+
+```{r}
+billboard_modified |> 
+  select(where( ~ all(is.na(.)))) |> 
+  colnames()
+```
+
+As you can see it is very easy to find empty columns in a table.

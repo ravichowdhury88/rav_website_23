@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ravi Chowdhury">
 
-<title>The R Stuff -</title>
+<title>The R Stuff - Select Empty Columns</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +21,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,49 +94,18 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-subtitle','listing-author','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">The R Stuff</span>
     </a>
   </div>
@@ -114,17 +116,17 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text"> Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
  <span class="menu-text"> Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">Ravi Chowdhury</span></a>
   </li>  
   <li class="nav-item compact">
@@ -145,180 +147,134 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Select Empty Columns</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Ravi Chowdhury </p>
+            </div>
+    </div>
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(5)</span></div><div class="category" data-category="database">database <span class="quarto-category-count">(2)</span></div><div class="category" data-category="sql">sql <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(4)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<section id="blog" class="level1">
-<h1>Blog</h1>
-<p><br></p>
 
+<p>This post is about selecting empty columns using R and <code>tidyverse</code>, specifically <code>dplyr</code>. There might be a need where you want to select only empty columns from a table for quality check. For example you expect a column to have data and if the column is empty in the table you can perform checks.</p>
+<p>With the <code>janitor</code> package, using the <code>remove_empty</code> function, you can remove empty columns but I am not sure if you can get a list of columns that are empty or have no data.</p>
+<section id="load-packages" class="level2">
+<h2 class="anchored" data-anchor-id="load-packages">Load packages</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v dplyr     1.1.0     v readr     2.1.4
+v forcats   1.0.0     v stringr   1.5.0
+v ggplot2   3.4.1     v tibble    3.2.0
+v lubridate 1.9.2     v tidyr     1.3.0
+v purrr     1.0.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+</section>
+<section id="read-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-data">Read data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>billboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 317 x 79
+   artist track date.ent~1   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9
+   &lt;chr&gt;  &lt;chr&gt; &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 2 Pac  Baby~ 2000-02-26    87    82    72    77    87    94    99    NA    NA
+ 2 2Ge+h~ The ~ 2000-09-02    91    87    92    NA    NA    NA    NA    NA    NA
+ 3 3 Doo~ Kryp~ 2000-04-08    81    70    68    67    66    57    54    53    51
+ 4 3 Doo~ Loser 2000-10-21    76    76    72    69    67    65    55    59    62
+ 5 504 B~ Wobb~ 2000-04-15    57    34    25    17    17    31    36    49    53
+ 6 98^0   Give~ 2000-08-19    51    39    34    26    26    19     2     2     3
+ 7 A*Tee~ Danc~ 2000-07-08    97    97    96    95   100    NA    NA    NA    NA
+ 8 Aaliy~ I Do~ 2000-01-29    84    62    51    41    38    35    35    38    38
+ 9 Aaliy~ Try ~ 2000-03-18    59    53    38    28    21    18    16    14    12
+10 Adams~ Open~ 2000-08-26    76    76    74    69    68    67    61    58    57
+# ... with 307 more rows, 67 more variables: wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;,
+#   wk12 &lt;dbl&gt;, wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;,
+#   wk18 &lt;dbl&gt;, wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;,
+#   wk24 &lt;dbl&gt;, wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;,
+#   wk30 &lt;dbl&gt;, wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;,
+#   wk36 &lt;dbl&gt;, wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;,
+#   wk42 &lt;dbl&gt;, wk43 &lt;dbl&gt;, wk44 &lt;dbl&gt;, wk45 &lt;dbl&gt;, wk46 &lt;dbl&gt;, wk47 &lt;dbl&gt;, ...</code></pre>
+</div>
+</div>
+<p>We will create an empty column in this table to reference it and find it.</p>
+</section>
+<section id="create-empty-column" class="level2">
+<h2 class="anchored" data-anchor-id="create-empty-column">Create empty column</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>billboard_modified <span class="ot">&lt;-</span> billboard <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">empty_col =</span> <span class="cn">NA_character_</span> <span class="co">#empty column</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="show-select-just-the-blank-or-empty-columns" class="level2">
+<h2 class="anchored" data-anchor-id="show-select-just-the-blank-or-empty-columns">Show / select just the blank or empty columns</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>billboard_modified <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>( <span class="sc">~</span> <span class="fu">all</span>(<span class="fu">is.na</span>(.))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 317 x 12
+   wk66  wk67  wk68  wk69  wk70  wk71  wk72  wk73  wk74  wk75  wk76  empty_col
+   &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;chr&gt;    
+ 1 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+ 2 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+ 3 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+ 4 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+ 5 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+ 6 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+ 7 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+ 8 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+ 9 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+10 NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    &lt;NA&gt;     
+# ... with 307 more rows</code></pre>
+</div>
+</div>
+<p>We will use <code>colnames()</code> function to show the list of columns since this table has multiple empty columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>billboard_modified <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>( <span class="sc">~</span> <span class="fu">all</span>(<span class="fu">is.na</span>(.)))) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "wk66"      "wk67"      "wk68"      "wk69"      "wk70"      "wk71"     
+ [7] "wk72"      "wk73"      "wk74"      "wk75"      "wk76"      "empty_col"</code></pre>
+</div>
+</div>
+<p>As you can see it is very easy to find empty columns in a table.</p>
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1702401919676" data-listing-reading-time-sort="1">
-<div class="body">
-<a href="./blog/2023_12_12_select_empty_column'/select_empty_columns.html">
-<h3 class="no-anchor listing-title">
-Select Empty Columns
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-This post is about selecting empty columns using R and <code>tidyverse</code>, specifically <code>dplyr</code>. There might be a need where you want to select only empty columns from a table for quality check. For example you…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./blog/2023_12_12_select_empty_column'/select_empty_columns.html">
-<div class="listing-author">
-Ravi Chowdhury
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="code,sql,database" data-listing-date-sort="1681275600000" data-listing-file-modified-sort="1681411244835" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="body">
-<a href="./blog/2023-04-create_table_permission_sql/create_table_permission_sql.html">
-<h3 class="no-anchor listing-title">
-Create Table Permission in SQL
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-While working on a code that writes data to SQL database, I ran into an issue where R gives me an error as below
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./blog/2023-04-create_table_permission_sql/create_table_permission_sql.html">
-<div class="listing-date">
-Apr 12, 2023
-</div>
-<div class="listing-author">
-Ravi C
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="tidyverse,code" data-listing-date-sort="1677650400000" data-listing-file-modified-sort="1677696951074" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="body">
-<a href="./blog/2023-03-reorder_columns/reorder_columns.html">
-<h3 class="no-anchor listing-title">
-Reorder columns
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-There are several…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./blog/2023-03-reorder_columns/reorder_columns.html">
-<div class="listing-date">
-Mar 1, 2023
-</div>
-<div class="listing-author">
-Ravi C
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="tidyverse,code,sql,database" data-listing-date-sort="1677564000000" data-listing-file-modified-sort="1677610613825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="body">
-<a href="./blog/2023-02-create_sql_database_in_r/create_sql_database.html">
-<h3 class="no-anchor listing-title">
-Create SQL DB in R
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-To produce a SQL database, we will utilize the <code>RSQLite</code> and <code>DBI</code> packages and the “iris” data set available in R.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./blog/2023-02-create_sql_database_in_r/create_sql_database.html">
-<div class="listing-date">
-Feb 28, 2023
-</div>
-<div class="listing-author">
-Ravi C
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="tidyverse,code,sql" data-listing-date-sort="1676268000000" data-listing-file-modified-sort="1676331319037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="body">
-<a href="./blog/2023-02-sql_server_connect/sql_server_connect.html">
-<h3 class="no-anchor listing-title">
-Interact with SQL Server
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-We will go through how to connect to a sql server and fetch tables.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./blog/2023-02-sql_server_connect/sql_server_connect.html">
-<div class="listing-date">
-Feb 13, 2023
-</div>
-<div class="listing-author">
-Ravi C
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="tidyverse,code" data-listing-date-sort="1674626400000" data-listing-file-modified-sort="1676313652160" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="body">
-<a href="./blog/2023-01-filter_with_str_detect/filter_with_str_detect.html">
-<h3 class="no-anchor listing-title">
-Filter with str_detect
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-To filter using str_detect, generally you can use the code as follows:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./blog/2023-01-filter_with_str_detect/filter_with_str_detect.html">
-<div class="listing-date">
-Jan 25, 2023
-</div>
-<div class="listing-author">
-Ravi C
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
