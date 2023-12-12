@@ -9,9 +9,9 @@ This post is about selecting empty columns using R and `tidyverse`, specifically
 
 With the `janitor` package, using the `remove_empty` function, you can remove empty columns but I am not sure if you can get a list of columns that are empty or have no data.
 
-## Load packages
-
-```{r load packages}
+```{r}
+#| label: load packages
+#| include: false
 library(tidyverse)
 ```
 

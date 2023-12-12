@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "The R Stuff",
     "section": "",
-    "text": "Select Empty Columns\n\n\n\n\n\n\n\n\n\n\n\n\nRavi Chowdhury\n\n\n\n\n\n\n  \n\n\n\n\nCreate Table Permission in SQL\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\nReorder columns\n\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\nCreate SQL DB in R\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\nInteract with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\nNo matching items"
+    "text": "Select Empty Columns\n\n\n\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nRavi Chowdhury\n\n\n\n\n\n\n  \n\n\n\n\nCreate Table Permission in SQL\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\nReorder columns\n\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\nCreate SQL DB in R\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\nInteract with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n  \n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -46,7 +46,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Blog\n\n\n\n\n\n\n\n\n\n\n\n\nSelect Empty Columns\n\n\n\n\n\n\n\n\n\n\n\n\nRavi Chowdhury\n\n\n\n\n\n\n\n\nCreate Table Permission in SQL\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nReorder columns\n\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nCreate SQL DB in R\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nInteract with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\nNo matching items"
+    "text": "Blog\n\n\n\n\n\n\n\n\n\n\n\n\nSelect Empty Columns\n\n\n\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nRavi Chowdhury\n\n\n\n\n\n\n\n\nCreate Table Permission in SQL\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nReorder columns\n\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nCreate SQL DB in R\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 28, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nInteract with SQL Server\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nRavi C\n\n\n\n\n\n\n\n\nFilter with str_detect\n\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nRavi C\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/post-with-code/index.html",
@@ -109,7 +109,7 @@
     "href": "blog/2023_12_12_select_empty_column'/select_empty_columns.html#load-packages",
     "title": "Select Empty Columns",
     "section": "Load packages",
-    "text": "Load packages\n\nlibrary(tidyverse)\n\n-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --\nv dplyr     1.1.0     v readr     2.1.4\nv forcats   1.0.0     v stringr   1.5.0\nv ggplot2   3.4.1     v tibble    3.2.0\nv lubridate 1.9.2     v tidyr     1.3.0\nv purrr     1.0.1     \n-- Conflicts ------------------------------------------ tidyverse_conflicts() --\nx dplyr::filter() masks stats::filter()\nx dplyr::lag()    masks stats::lag()\ni Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+    "text": "Load packages"
   },
   {
     "objectID": "blog/2023_12_12_select_empty_column'/select_empty_columns.html#read-data",
