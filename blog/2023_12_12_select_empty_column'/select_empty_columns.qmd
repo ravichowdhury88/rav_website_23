@@ -1,6 +1,8 @@
 ---
 title: "Select Empty Columns"
 author: "Ravi Chowdhury"
+date: "12-12-2023"
+categories: [tidyverse, code, R]
 ---
 
 This post is about selecting empty columns using R and `tidyverse`, specifically `dplyr`. There might be a need where you want to select only empty columns from a table for quality check. For example you expect a column to have data and if the column is empty in the table you can perform checks.
